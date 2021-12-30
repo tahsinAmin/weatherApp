@@ -2,54 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Weather app</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <div class="mx-auto max-w-[320px] m-20">
+    <div class="container">
       <header>
-        <div class="compass-icon">
-          <img src="./icons/map.svg" class="" alt="" />
-        </div>
+        <div class="compass-icon"><img src="/icons/compass.svg" alt="" /></div>
       </header>
-
-      <div class="weather-title my-8 mx-0 text-center">
-        <h1 class="text-2xl font-bold">Simply Weather</h1>
-        <p class="text-xl font-semibold">
-          View the curerent weather for your city
-        </p>
+      <div class="weather-title">
+        <h1>Simply Weather</h1>
+        <p>View the current weather for your city</p>
       </div>
-      <form action="/" method="POST" class="p-4">
+      <form action="/" method="POST">
         <input
           type="text"
           name="city"
-          class="ghost-input w-full border-3 shadow border-t-0 border-x-0"
-          placeholder="Enter a City"
+          class="ghost-input"
+          placeholder="Enter a city"
         />
       </form>
-      <div class="result text-center">
-        <h1 class="temp text-2xl font-semibold">234.88°</h1>
-        <div class="icons-des flex justify-center space-x-2 items-center">
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-            ></path>
-          </svg>
-          <h3 class="text-xl font-medium">Overcast Clouds</h3>
+
+      <div class="result">
+        <% if(temp !== null) {%>
+        <h1 class="temp"><%= temp %></h1>
+        <% } %>
+
+        <div class="icon-des">
+          <% if(icon !== null) {%>
+          <img
+            class="icon"
+            src="http://openweathermap.org/img/w/<%= icon %>.png"
+            alt=""
+          />
+          <% } %> <% if(des !== null) {%>
+          <h3><%= des %></h3>
+          <% } %>
         </div>
-        <p class="city">Paris</p>
+
+        <% if(city !== null) {%>
+        <p class="city"><%= city %></p>
+        <% } %>
       </div>
     </div>
   </body>
