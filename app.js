@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 const weatherRoute = require("./routes/weather");
 
 //  Middleware route
+app.use(express.static("public"));
 app.use("/", weatherRoute);
 
 // use a view engine
